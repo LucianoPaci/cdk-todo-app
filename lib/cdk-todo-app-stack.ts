@@ -1,19 +1,19 @@
-import { Duration, Stack, StackProps } from 'aws-cdk-lib';
-import * as sns from 'aws-cdk-lib/aws-sns';
-import * as subs from 'aws-cdk-lib/aws-sns-subscriptions';
-import * as sqs from 'aws-cdk-lib/aws-sqs';
-import { Construct } from 'constructs';
+import { Stack, StackProps } from 'aws-cdk-lib'
+import { Construct } from 'constructs'
+import { TodoBackend } from './todo-backend'
+import { Website } from '@symphoniacloud/cdk-website'
 
 export class CdkTodoAppStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, id, props)
 
-    const queue = new sqs.Queue(this, 'CdkTodoAppQueue', {
-      visibilityTimeout: Duration.seconds(300)
-    });
+    const todoBackend = new TodoBackend(this, 'TodoBackend', {})
 
-    const topic = new sns.Topic(this, 'CdkTodoAppTopic');
-
-    topic.addSubscription(new subs.SqsSubscription(queue));
+    const website = new Website(this, 'website', {
+      content: {
+        path: 'frontend/build',
+        performCacheInvalidation: true,
+      },
+    })
   }
 }

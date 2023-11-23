@@ -11,13 +11,21 @@
     "cdk": "cdk"
   },
   "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.454.0",
+    "@aws-sdk/lib-dynamodb": "^3.454.0",
+    "@symphoniacloud/cdk-website": "^0.1.0",
+    "@types/aws-lambda": "^8.10.129",
     "@types/jest": "^29.5.8",
     "@types/node": "20.9.0",
+    "@types/uuid": "^9.0.7",
+    "@ukautz/aws-cdk-static-website": "^2.2.0",
+    "aws-cdk": "2.110.1",
+    "esbuild": "^0.19.7",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
-    "aws-cdk": "2.110.1",
     "ts-node": "^10.9.1",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "uuid": "^9.0.1"
   },
   "dependencies": {
     "aws-cdk-lib": "2.110.1",
